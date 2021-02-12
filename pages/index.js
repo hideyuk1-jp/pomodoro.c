@@ -1,7 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import React, { useState } from 'react';
 
 export default function Home() {
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +16,7 @@ export default function Home() {
           pomodoro.c
         </h1>
         <p>
-          {counter()}
+          {timeTalker()}
         </p>
       </main>
     </div>
@@ -60,6 +62,14 @@ export default function Home() {
   )
 }
 
-let counter = (props) => {
-  return "1";
+let timeTalker = (props) => {
+  const [time, setTime] = useState(15000);
+  const [setOrNot, setSetOrNot] = useState(false);
+
+  if(setOrNot===false){
+    setInterval(()=>{setTime(time=>time-1)},1000);
+    setSetOrNot(true);
+  }
+
+  return time;
 }

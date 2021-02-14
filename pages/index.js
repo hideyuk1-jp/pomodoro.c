@@ -21,6 +21,7 @@ export default function Home() {
       </main>
     </div>
 
+    //初期　参考用に取ってあり、近いうちに削除
     /*
     <div className={styles.container}>
       <Head>
@@ -62,13 +63,32 @@ export default function Home() {
   )
 }
 
+//メイン　秒数を返します
 let timeTalker = (props) => {
-  const [time, setTime] = useState(15000);
+
+  //time:そのまま表示されます
+  //workingOrNot:25分カウント時true、5分カウント時falseのブール値です
+  //setOrNot:初回起動時のみ使われ、以降ずっとfalseです
+  //これが無いと1秒ごとにコールバックが増え続け減少が加速します
+  const [time, setTime] = useState(10);
+  const [workingOrNot, setWorkingOrNot] = useState(true);
   const [setOrNot, setSetOrNot] = useState(false);
 
+  //初回判定
   if(setOrNot===false){
     setInterval(()=>{setTime(time=>time-1)},1000);
     setSetOrNot(true);
+  }
+  
+  //0秒判定　時間を２種類切り替えます
+  if(time === 0){
+    if(workingOrNot===true){
+      setWorkingOrNot(false);
+      setTime(5)
+    }else{
+      setWorkingOrNot(true);
+      setTime(10)
+    }
   }
 
   return time;

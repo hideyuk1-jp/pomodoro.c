@@ -1,9 +1,23 @@
+html {
+  --color-waves-red-1: #b34d4d;
+  --color-waves-red-2: #944545;
+  --color-waves-red-3: #6b3e47;
+  --color-waves-red-4: #50393e;
+  --color-waves-green-1: #4db3a2;
+  --color-waves-green-2: #469579;
+  --color-waves-green-3: #3d6b61;
+  --color-waves-green-4: #395051;
+  --color-bg: #333;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background: var(--color-bg);
+  color: #fff;
 }
 
 a {
